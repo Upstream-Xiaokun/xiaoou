@@ -39,84 +39,6 @@
     </head>
 
     <body>
-        <script>
-            let isWeixin = () => {
-                    let ua = window.navigator.userAgent.toLowerCase()
-                    return;
-                    /micromessenger/
-                    .test(ua)
-                }
-                // method 自动播放
-            let audioPlayer = (id) => {
-                    let audio = document.getElementById(id)
-                    if (isWeixin()) {
-                        document.addEventListener(
-                            'WeixinJSBridgeReady', () => {
-                                audio.play()
-                            }, false);
-
-                        // 添加 getNetworkType 的判断原因, 请看问题分析2
-                        if (typeof window.WeixinJSBridge ==
-                            "object" &&
-                            typeof window.WeixinJSBridge
-                            .invoke ==
-                            "function"
-                        ) {
-                            window.
-                            WeixinJSBridge
-                                .invoke(
-                                    'getNetworkType', {}, () => {
-                                        audio.play()
-                                    })
-                        }
-                    } else {
-                        // audio.play();
-                        let touchPlay = () => {
-                            audio.play();
-                            document.removeEventListener(
-                                'touchstart', touchPlay, false)
-                        };
-                        if (audio.paused) {
-                            document.addEventListener(
-                                'touchstart', touchPlay, false)
-                        }
-                    }
-                }
-                // 使用
-            audioPlayer(
-                'audio-player'
-            );
-
-            var audio = document.getElementById("audio-player");
-            var btn = document.getElementById("btn");
-            var rotateVal = 0;
-
-            var InterVal; // 定时器
-            // 设置定时器
-            function rotate() {
-                InterVal = setInterval(function() {
-                    rotateVal += 4;
-                    // 设置旋转属性(顺时针)
-                    btn.style.transform = 'rotate(' + rotateVal + 'deg)';
-                    // 设置旋转属性(逆时针)
-                    //img.style.transform = 'rotate(-' + rotateVal + 'deg)'
-                    // 设置旋转时的动画  匀速0.1s
-                    btn.style.transition = '0.1s linear'
-                }, 100)
-            }
-            // rotate();
-            btn.onclick = function() { //点击按钮播放停止
-                if (audio.paused) { //判断当前的状态是否为暂停，若是则点击播放，否则暂停
-                    audio.play();
-                    rotate()
-                } else {
-                    audio.pause();
-                    clearInterval(InterVal)
-                }
-            };
-        </script>
-
-
         <marquee behavior="scorll" direction="left" scrolldelay="150">
             ひとりぼっちにはさせないでよ&nbsp;&nbsp; いつから重たい荷物を持つ&nbsp;&nbsp; 日々に慣れてしまって&nbsp;&nbsp; いたんだろう&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 難しいことは後回しでいいから&nbsp;&nbsp;&nbsp;&nbsp; 孤独な僕を夜が待つ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             寂しい思いはもう&nbsp;&nbsp; 僕にはさせないでよ&nbsp;&nbsp; 思い出した夜を&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; どうかひとりぼっちとは&nbsp;&nbsp; 呼ばないで&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -139,85 +61,76 @@
         </marquee>
         <marquee class="turth_speak" behavior="scroll" direction="right" scrolldelay="150">Happy New Year</marquee>
 
+        <script>
+            // 为了防止第二次创建
+            let playState = true
 
-
-        <audio id="audio-player" ref="audio" preload="preload" autoplay="autoplay" loop="loop">
-            <source src="./Oz.mp3" type="audio/mpeg">
-            Your browser does not support the audio tag.
-        </audio>
-
-
-
-        <!-- <script>
-        // 为了防止第二次创建
-        let playState = true
-
-        function testAutoPlay() {
-            // 返回一个promise以告诉调用者检测结果
-            return new Promise(resolve => {
-                if (playState) {
-                    let audio = document.createElement('audio');
-                    audio.src = "./Oz.mp3"
-                        //循环播放，如果不需要可注释
-                    audio.loop = "loop"
-                    document.body.appendChild(audio);
-                    let autoplay = true;
-                    // play返回的是一个promise
-                    audio.play().then(() => {
-                        // 支持自动播放
-                        autoplay = true;
-                        console.log("正常播放")
-                    }).catch(err => {
-                        // 不支持自动播放
-                        console.log("不支持播放")
-                        autoplay = false;
-                    }).finally((e) => {
-                        resolve(autoplay);
-                    });
-                    playState = false
-                } else {
-                    resolve(false)
-                }
-
-            });
-        }
-
-        let audioInfo = {
-            autoplay: false,
-            testAutoPlay() {
-                return testAutoPlay()
-            },
-            // 监听页面的点击事件，一旦点过了就能autoplay了
-            setAutoPlayWhenClick() {
-                function setAutoPlay() {
-                    // 设置自动播放为true
-                    audioInfo.autoplay = true;
-                    document.removeEventListener('click', setAutoPlay);
-                    document.removeEventListener('touchend', setAutoPlay);
-                }
-                document.addEventListener('click', setAutoPlay);
-                document.addEventListener('touchend', setAutoPlay);
-            },
-            init() {
-                // 检测是否能自动播放
-                audioInfo.testAutoPlay().then(autoplay => {
-                    if (!audioInfo.autoplay) {
-                        audioInfo.autoplay = autoplay;
+            function testAutoPlay() {
+                // 返回一个promise以告诉调用者检测结果
+                return new Promise(resolve => {
+                    if (playState) {
+                        let audio = document.createElement('audio');
+                        audio.src = "./Oz.mp3"
+                            //循环播放，如果不需要可注释
+                        audio.loop = "loop"
+                        document.body.appendChild(audio);
+                        let autoplay = true;
+                        // play返回的是一个promise
+                        audio.play().then(() => {
+                            // 支持自动播放
+                            autoplay = true;
+                            console.log("正常播放")
+                        }).catch(err => {
+                            // 不支持自动播放
+                            console.log("不支持播放")
+                            autoplay = false;
+                        }).finally((e) => {
+                            resolve(autoplay);
+                        });
+                        playState = false
+                    } else {
+                        resolve(false)
                     }
+
                 });
-                // 用户点击交互之后，设置成能自动播放
-                audioInfo.setAutoPlayWhenClick();
             }
-        };
-        // PC端
-        document.addEventListener('click', () => {
-            audioInfo.init();
-        });
-        // 移动端
-        document.addEventListener('touchend', () => {
-            audioInfo.init();
-        });
-    </script> -->
+
+            let audioInfo = {
+                autoplay: false,
+                testAutoPlay() {
+                    return testAutoPlay()
+                },
+                // 监听页面的点击事件，一旦点过了就能autoplay了
+                setAutoPlayWhenClick() {
+                    function setAutoPlay() {
+                        // 设置自动播放为true
+                        audioInfo.autoplay = true;
+                        document.removeEventListener('click', setAutoPlay);
+                        document.removeEventListener('touchend', setAutoPlay);
+                    }
+                    document.addEventListener('click', setAutoPlay);
+                    document.addEventListener('touchend', setAutoPlay);
+                },
+                init() {
+                    // 检测是否能自动播放
+                    audioInfo.testAutoPlay().then(autoplay => {
+                        if (!audioInfo.autoplay) {
+                            audioInfo.autoplay = autoplay;
+                        }
+                    });
+                    // 用户点击交互之后，设置成能自动播放
+                    audioInfo.setAutoPlayWhenClick();
+                }
+            };
+            // PC端
+            document.addEventListener('click', () => {
+                audioInfo.init();
+            });
+            // 移动端
+            document.addEventListener('touchend', () => {
+                audioInfo.init();
+            });
+        </script>
         <!-- partial:index.partial.html -->
         <!-- SVG Spritesheet -->
         <div style="height: 0; width: 0; position: absolute; visibility: hidden;">
