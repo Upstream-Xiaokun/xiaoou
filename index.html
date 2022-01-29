@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - Firework Simulator v2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#000000">
+    <link rel="shortcut icon" type="image/png" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
+    <link rel="icon" type="image/png" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
+    <link rel="apple-touch-icon-precomposed" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileImage" content="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/firework-burst-icon-v2.png">
+    <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <!-- <script language="javascript">
+        var i = 195;
+
+        function clock() {
+            i = i - 1;
+            if (i > 0) {
+                setTimeout("clock();", 1000);
+            } else {
+                self.close();
+            }
+        }
+        clock();
+    </script> -->
+    <style>
+        .turth_speak {
+            color: yellow;
+            font-weight: 100px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <marquee behavior="scorll" direction="left" scrolldelay="150">
+        ひとりぼっちにはさせないでよ&nbsp;&nbsp; いつから重たい荷物を持つ&nbsp;&nbsp; 日々に慣れてしまって&nbsp;&nbsp; いたんだろう&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 難しいことは後回しでいいから&nbsp;&nbsp;&nbsp;&nbsp; 孤独な僕を夜が待つ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        寂しい思いはもう&nbsp;&nbsp; 僕にはさせないでよ&nbsp;&nbsp; 思い出した夜を&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; どうかひとりぼっちとは&nbsp;&nbsp; 呼ばないで&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 流してきた涙は結局まだ誰にも言えない&nbsp;&nbsp;
+        触れては壊してまた傷ついては&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ひとりぼっち夜に縋る&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        寂しい思いはもう&nbsp;&nbsp; 僕にはさせないでよ&nbsp;&nbsp; 思い出した夜を&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; どうかひとりぼっちとは&nbsp;&nbsp; 呼ばないで&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;あなたが弱いのなら&nbsp;&nbsp; 僕の弱さも見せるから&nbsp;&nbsp;&nbsp;&nbsp;
+        あなたが強がるのならば&nbsp;&nbsp; キミの弱さをそっと抱きしめるよ&nbsp;&nbsp;&nbsp;&nbsp; ひとりぼっちにはさせないでよ&nbsp;&nbsp;&nbsp;&nbsp; ひとりぼっちにはさせないよ&nbsp;&nbsp;
+    </marquee>
+    <marquee behavior="scorll" direction="left" scrolldelay="150">
+        请不要让我再孤身一人了&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 是从何时起&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 就已经习惯了&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        负重而行的日子呢&nbsp;&nbsp;&nbsp; 困难的事情 以后再去想也可以&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;只有夜色守望着孤独的我&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 请不要再让我&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 感到寂寞了啊&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        在回忆涌现的夜晚里&nbsp;&nbsp; 请别再将我&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 唤作孤独之人了啊&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 零落的泪水 终究未能与谁人倾诉&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        仿佛一经触碰便会损坏 再度受伤的我&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;惟有形单影只地与夜色相依&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请不要再让我&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 感到寂寞了啊&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 在回忆涌现的夜晚里&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请别再将我&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;唤作孤独之人了啊&nbsp;&nbsp;&nbsp;&nbsp; 如果你也脆弱不堪&nbsp;&nbsp;&nbsp;&nbsp; 我会向你展现自己的弱点&nbsp;&nbsp; 如果你在故作坚强&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 我会把你的脆弱轻轻拥入怀中&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;请不要再让我孤身一人了啊&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;绝对不会再让你孤身一人啦&nbsp;&nbsp;
+    </marquee>
+    <marquee class="turth_speak" behavior="scroll" direction="right" scrolldelay="150">Happy New Year</marquee>
+    <script>
+        // 为了防止第二次创建
+        let playState = true
+
+        function testAutoPlay() {
+            // 返回一个promise以告诉调用者检测结果
+            return new Promise(resolve => {
+                if (playState) {
+                    let audio = document.createElement('audio');
+                    audio.src = "./Oz.mp3"
+                        //循环播放，如果不需要可注释
+                    audio.loop = "loop"
+                    document.body.appendChild(audio);
+                    let autoplay = true;
+                    // play返回的是一个promise
+                    audio.play().then(() => {
+                        // 支持自动播放
+                        autoplay = true;
+                        console.log("正常播放")
+                    }).catch(err => {
+                        // 不支持自动播放
+                        console.log("不支持播放")
+                        autoplay = false;
+                    }).finally((e) => {
+                        resolve(autoplay);
+                    });
+                    playState = false
+                } else {
+                    resolve(false)
+                }
+
+            });
+        }
+
+        let audioInfo = {
+            autoplay: false,
+            testAutoPlay() {
+                return testAutoPlay()
+            },
+            // 监听页面的点击事件，一旦点过了就能autoplay了
+            setAutoPlayWhenClick() {
+                function setAutoPlay() {
+                    // 设置自动播放为true
+                    audioInfo.autoplay = true;
+                    document.removeEventListener('click', setAutoPlay);
+                    document.removeEventListener('touchend', setAutoPlay);
+                }
+                document.addEventListener('click', setAutoPlay);
+                document.addEventListener('touchend', setAutoPlay);
+            },
+            init() {
+                // 检测是否能自动播放
+                audioInfo.testAutoPlay().then(autoplay => {
+                    if (!audioInfo.autoplay) {
+                        audioInfo.autoplay = autoplay;
+                    }
+                });
+                // 用户点击交互之后，设置成能自动播放
+                audioInfo.setAutoPlayWhenClick();
+            }
+        };
+        // PC端
+        document.addEventListener('click', () => {
+            audioInfo.init();
+        });
+        // 移动端
+        document.addEventListener('touchend', () => {
+            audioInfo.init();
+        });
+    </script>
+    <!-- partial:index.partial.html -->
+    <!-- SVG Spritesheet -->
+    <div style="height: 0; width: 0; position: absolute; visibility: hidden;">
+        <svg xmlns="http://www.w3.org/2000/svg">
+		<symbol id="icon-play" viewBox="0 0 24 24">
+			<path d="M8 5v14l11-7z"/>
+		</symbol>
+		<symbol id="icon-pause" viewBox="0 0 24 24">
+			<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+		</symbol>
+		<symbol id="icon-close" viewBox="0 0 24 24">
+			<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+		</symbol>
+		<symbol id="icon-settings" viewBox="0 0 24 24">
+			<path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+		</symbol>
+		<symbol id="icon-sound-on" viewBox="0 0 24 24">
+			<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+		</symbol>
+		<symbol id="icon-sound-off" viewBox="0 0 24 24">
+			<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+		</symbol>
+	</svg>
+    </div>
+
+    <!-- App -->
+    <div class="container">
+        <div class="loading-init">
+            <div class="loading-init__header">Loading</div>
+            <div class="loading-init__status">Assembling Shells</div>
+        </div>
+        <div class="stage-container remove">
+            <div class="canvas-container">
+                <canvas id="trails-canvas"></canvas>
+                <canvas id="main-canvas"></canvas>
+            </div>
+            <div class="controls">
+                <div class="btn pause-btn">
+                    <svg fill="white" width="24" height="24"><use href="#icon-pause" xlink:href="#icon-pause"></use></svg>
+                </div>
+                <div class="btn sound-btn">
+                    <svg fill="white" width="24" height="24"><use href="#icon-sound-off" xlink:href="#icon-sound-off"></use></svg>
+                </div>
+                <div class="btn settings-btn">
+                    <svg fill="white" width="24" height="24"><use href="#icon-settings" xlink:href="#icon-settings"></use></svg>
+                </div>
+            </div>
+            <div class="menu hide">
+                <div class="menu__inner-wrap">
+                    <div class="btn btn--bright close-menu-btn">
+                        <svg fill="white" width="24" height="24"><use href="#icon-close" xlink:href="#icon-close"></use></svg>
+                    </div>
+                    <div class="menu__header">Settings</div>
+                    <div class="menu__subheader">For more info, click any label.</div>
+                    <form>
+                        <div class="form-option form-option--select">
+                            <label class="shell-type-label">Shell Type</label>
+                            <select class="shell-type"></select>
+                        </div>
+                        <div class="form-option form-option--select">
+                            <label class="shell-size-label">Shell Size</label>
+                            <select class="shell-size"></select>
+                        </div>
+                        <div class="form-option form-option--select">
+                            <label class="quality-ui-label">Quality</label>
+                            <select class="quality-ui"></select>
+                        </div>
+                        <div class="form-option form-option--select">
+                            <label class="sky-lighting-label">Sky Lighting</label>
+                            <select class="sky-lighting"></select>
+                        </div>
+                        <div class="form-option form-option--select">
+                            <label class="scaleFactor-label">Scale</label>
+                            <select class="scaleFactor"></select>
+                        </div>
+                        <div class="form-option form-option--checkbox">
+                            <label class="auto-launch-label">Auto Fire</label>
+                            <input class="auto-launch" type="checkbox" />
+                        </div>
+                        <div class="form-option form-option--checkbox form-option--finale-mode">
+                            <label class="finale-mode-label">Finale Mode</label>
+                            <input class="finale-mode" type="checkbox" />
+                        </div>
+                        <div class="form-option form-option--checkbox">
+                            <label class="hide-controls-label">Hide Controls</label>
+                            <input class="hide-controls" type="checkbox" />
+                        </div>
+                        <div class="form-option form-option--checkbox form-option--fullscreen">
+                            <label class="fullscreen-label">Fullscreen</label>
+                            <input class="fullscreen" type="checkbox" />
+                        </div>
+                        <div class="form-option form-option--checkbox">
+                            <label class="long-exposure-label">Open Shutter</label>
+                            <input class="long-exposure" type="checkbox" />
+                        </div>
+                    </form>
+                    <div class="credits">
+                        Passionately built by <a href="https://cmiller.tech/" target="_blank">Caleb Miller</a>.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="help-modal">
+            <div class="help-modal__overlay"></div>
+            <div class="help-modal__dialog">
+                <div class="help-modal__header"></div>
+                <div class="help-modal__body"></div>
+                <button type="button" class="help-modal__close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+    <!-- partial -->
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/fscreen%401.0.1.js'></script>
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/Stage%400.1.4.js'></script>
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/MyMath.js'></script>
+    <script src="./script.js"></script>
+
+</body>
+
+</html>
