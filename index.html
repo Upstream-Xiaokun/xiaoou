@@ -35,73 +35,119 @@
 
     <script>
         // 为了防止第二次创建
-        let playState = true
+        // let playState = true
 
-        function testAutoPlay() {
-            // 返回一个promise以告诉调用者检测结果
-            return new Promise(resolve => {
-                if (playState) {
-                    let audio = document.createElement('audio');
-                    audio.src = "./Oz.mp3"
-                        //循环播放，如果不需要可注释
-                    audio.loop = "loop"
-                    document.body.appendChild(audio);
-                    let autoplay = true;
-                    // play返回的是一个promise
-                    audio.play().then(() => {
-                        // 支持自动播放
-                        autoplay = true;
-                        console.log("正常播放")
-                    }).catch(err => {
-                        // 不支持自动播放
-                        console.log("不支持播放")
-                        autoplay = false;
-                    }).finally((e) => {
-                        resolve(autoplay);
-                    });
-                    playState = false
-                } else {
-                    resolve(false)
+        // function testAutoPlay() {
+        //     // 返回一个promise以告诉调用者检测结果
+        //     return new Promise(resolve => {
+        //         if (playState) {
+        //             let audio = document.createElement('audio');
+        //             audio.src = "./Oz.mp3"
+        //                 //循环播放，如果不需要可注释
+        //             audio.loop = "loop"
+        //             document.body.appendChild(audio);
+        //             let autoplay = true;
+        //             // play返回的是一个promise
+        //             audio.play().then(() => {
+        //                 // 支持自动播放
+        //                 autoplay = true;
+        //                 console.log("正常播放")
+        //             }).catch(err => {
+        //                 // 不支持自动播放
+        //                 console.log("不支持播放")
+        //                 autoplay = false;
+        //             }).finally((e) => {
+        //                 resolve(autoplay);
+        //             });
+        //             playState = false
+        //         } else {
+        //             resolve(false)
+        //         }
+
+        //     });
+        // }
+
+        // let audioInfo = {
+        //     autoplay: false,
+        //     testAutoPlay() {
+        //         return testAutoPlay()
+        //     },
+        //     // 监听页面的点击事件，一旦点过了就能autoplay了
+        //     setAutoPlayWhenClick() {
+        //         function setAutoPlay() {
+        //             // 设置自动播放为true
+        //             audioInfo.autoplay = true;
+        //             document.removeEventListener('click', setAutoPlay);
+        //             document.removeEventListener('touchend', setAutoPlay);
+        //         }
+        //         document.addEventListener('click', setAutoPlay);
+        //         document.addEventListener('touchend', setAutoPlay);
+        //     },
+        //     init() {
+        //         // 检测是否能自动播放
+        //         audioInfo.testAutoPlay().then(autoplay => {
+        //             if (!audioInfo.autoplay) {
+        //                 audioInfo.autoplay = autoplay;
+        //             }
+        //         });
+        //         // 用户点击交互之后，设置成能自动播放
+        //         audioInfo.setAutoPlayWhenClick();
+        //     }
+        // };
+        // // PC端
+        // document.addEventListener('click', () => {
+        //     audioInfo.init();
+        // });
+        // // 移动端
+        // document.addEventListener('touchend', () => {
+        //     audioInfo.init();
+        // });
+
+
+        //浏览器适用       
+        contextClass = window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.msAudioContext;
+        try {
+            var context = new contextClass();
+            var source = null;
+            var audioBuffer = null;
+
+            function stopSound() {
+                if (source) {
+                    source.stop(musics); //立即停止
                 }
-
-            });
-        }
-
-        let audioInfo = {
-            autoplay: false,
-            testAutoPlay() {
-                return testAutoPlay()
-            },
-            // 监听页面的点击事件，一旦点过了就能autoplay了
-            setAutoPlayWhenClick() {
-                function setAutoPlay() {
-                    // 设置自动播放为true
-                    audioInfo.autoplay = true;
-                    document.removeEventListener('click', setAutoPlay);
-                    document.removeEventListener('touchend', setAutoPlay);
-                }
-                document.addEventListener('click', setAutoPlay);
-                document.addEventListener('touchend', setAutoPlay);
-            },
-            init() {
-                // 检测是否能自动播放
-                audioInfo.testAutoPlay().then(autoplay => {
-                    if (!audioInfo.autoplay) {
-                        audioInfo.autoplay = autoplay;
-                    }
-                });
-                // 用户点击交互之后，设置成能自动播放
-                audioInfo.setAutoPlayWhenClick();
             }
-        };
-        // PC端
-        document.addEventListener('click', () => {
-            audioInfo.init();
-        });
-        // 移动端
-        document.addEventListener('touchend', () => {
-            audioInfo.init();
-        });
+
+            function playSound() {
+                source = context.createBufferSource();
+                source.buffer = audioBuffer;
+                source.loop = true;
+                source.connect(context.destination);
+                source.start(0); //立即播放    
+            }
+
+            function initSound(arrayBuffer) {
+                context.decodeAudioData(arrayBuffer, function(buffer) { //解码成功时的回调函数
+                    audioBuffer = buffer;
+                    playSound();
+                }, function(e) { //解码出错时的回调函数
+                    console.log('404', e);
+                });
+            }
+
+            function loadAudioFile(url) {
+                var xhr = new XMLHttpRequest(); //通过XHR下载音频文件
+                xhr.open('GET', url, true);
+                xhr.responseType = 'arraybuffer';
+                xhr.onload = function(e) { //下载完成
+                    initSound(this.response);
+                };
+                xhr.send();
+            }
+            //这里用来存储背景音乐的路径
+            loadAudioFile('./Oz.mp3');
+        } catch (e) {
+            console.log('无法找到音乐！');
+        }
     </script>
 </head>
 
