@@ -31,7 +31,9 @@
             font-size: 20px;
         }
     </style>
-    <script>
+
+
+    <!-- <script>
         // 为了防止第二次创建
         let playState = true
 
@@ -100,10 +102,20 @@
         document.addEventListener('touchend', () => {
             audioInfo.init();
         });
-    </script>
+    </script> -->
 </head>
 
 <body>
+    <audio autoplay="autopaly" loop="loop" id="audios">
+        <source src="./Oz.mp3" type="audio/mp3" />
+    </audio>
+
+    <script>
+        // 将以下代码添加到js入口函数内即可
+        document.addEventListener('touchstart', function() {
+            document.getElementById('audios').play()
+        })
+    </script>
     <!-- <audio src="./Oz.mp3" id="audio1" hidden="true" autoplay="true" loop="true"></audio> -->
     <marquee class="song" behavior="scorll" direction="left" scrolldelay="150">
         ひとりぼっちにはさせないでよ&nbsp;&nbsp; いつから重たい荷物を持つ&nbsp;&nbsp; 日々に慣れてしまって&nbsp;&nbsp; いたんだろう&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 難しいことは後回しでいいから&nbsp;&nbsp;&nbsp;&nbsp; 孤独な僕を夜が待つ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
