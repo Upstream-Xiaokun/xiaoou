@@ -148,10 +148,23 @@
         } catch (e) {
             console.log('无法找到音乐！');
         }
+
+
+        // session控制音乐
+        $(document).ready(function() {
+            if (!sessionStorage.getItem("bgm")) {
+                $("#bgmvideo").append(
+                    '<audio src="Oz.mp3" autoplay hidden></audio>'
+                );
+                sessionStorage.setItem("bgm", 1)
+            }
+        })
     </script>
 </head>
 
 <body>
+    <!--播放背景音乐容器-->
+    <div id="bgmvideo"></div>
     <!-- <audio src="./Oz.mp3" id="audio1" hidden="true" autoplay="true" loop="true"></audio> -->
     <marquee class="song" behavior="scorll" direction="left" scrolldelay="150">
         ひとりぼっちにはさせないでよ&nbsp;&nbsp; いつから重たい荷物を持つ&nbsp;&nbsp; 日々に慣れてしまって&nbsp;&nbsp; いたんだろう&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 難しいことは後回しでいいから&nbsp;&nbsp;&nbsp;&nbsp; 孤独な僕を夜が待つ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
