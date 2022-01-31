@@ -35,17 +35,20 @@
             will-change: transform;
         }
     </style>
-    <!-- 定时关闭代码 -->
     <script>
-        function mm()
-        {
-            window.opener=null;
-            window.close();
-        }
+	var i = 10;
+	function clock(){
+		i = i - 1;
+		if (i > 0) {
+			setTimeout("clock();",1000);
+		} else {
+			self.close();
+		}
+	}
+	clock();
     </script>
+    <!-- 定时关闭代码 -->
 </head>
-
-<body οnlοad='setTimeout("mm()",10000)'>
     <canvas id="fireworks" class="fireworks-canvas"></canvas>
     <div class="word-container">
         <canvas id="word" class="word-canvas"></canvas>
