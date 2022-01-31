@@ -786,7 +786,7 @@ function randomFastShell() {
 
 const shellTypes = {
     'Random': randomShell,
-    'Crackle': crackleShell,
+    'Crackleni': crackleShell,
     'Crossette': crossetteShell,
     'Crysanthemum': crysanthemumShell,
     'Falling Leaves': fallingLeavesShell,
