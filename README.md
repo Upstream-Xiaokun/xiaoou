@@ -1,4 +1,4 @@
-## 基于JavaScript+CSS+HTML的WebApp开源项目
+## 基于JavaScript+CSS+HTML的烟花效果开源项目
 >感谢作者的开源，才让我有能力制作这个WebApp项目
 
 
